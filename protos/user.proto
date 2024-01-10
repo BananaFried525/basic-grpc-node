@@ -4,6 +4,12 @@ package user;
 
 service UserService {
   rpc GetUser(GetUserRequest) returns (User) {}
+
+  rpc CreateUser(stream User) returns (UserList) {}
+
+  rpc SplitCharacters(SplitCharactersRequest) returns (stream SplitCharactersResponse) {}
+
+  rpc SplitCharactersStream(stream SplitCharactersRequest) returns (stream SplitCharactersResponse) {}
 }
 
 message GetUserRequest {
@@ -13,4 +19,16 @@ message GetUserRequest {
 message User {
   string id = 1;
   string name = 2;
+}
+
+message UserList {
+  repeated User users = 1;
+}
+
+message SplitCharactersRequest {
+  string name = 1;
+}
+
+message SplitCharactersResponse {
+  string char = 1;
 }

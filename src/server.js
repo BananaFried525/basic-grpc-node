@@ -22,6 +22,9 @@ const main = () => {
   // add service
   server.addService(user.UserService.service, {
     getUser: userService.getUser,
+    createUser: userService.createUser,
+    splitCharacters: userService.splitCharacters,
+    splitCharactersStream: userService.SplitCharactersStream
   });
 
   server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), () => {
